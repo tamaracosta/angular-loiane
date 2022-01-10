@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataBindingComponent implements OnInit {
 
+  url : string = 'http://loiane.com';
+  cursoAngular: boolean = true;
+  fakeUrlImg : string = 'https://s2.drogasil.com.br/skin/frontend/drogasil/default/images/media/logo.png';
+
+  getValor(){
+    return 1;
+  }
+
+  getCurtirAngular(){
+    return true;
+  }
   constructor() { }
 
   ngOnInit(): void {

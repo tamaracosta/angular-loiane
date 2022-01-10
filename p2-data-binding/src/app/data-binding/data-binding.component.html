@@ -1,1 +1,13 @@
-<p>data-binding funcionandoff!</p>
+<section>
+    <h3>Interpolação</h3>
+    <p>String renderizada com interpolação {{ url }}</p>
+    <p>Resultado de 1 + 1 é {{ 1 + 1 }}</p>
+    <p>Resultado de 1 + 1 não é {{ 1 + 1 + getValor()}}</p>
+    <p>Eu curto curso de Angular : é {{ cursoAngular && getCurtirAngular()}}</p>
+
+
+    <h3>Property Biding</h3>
+    <div><img src="{{ fakeUrlImg }}"> <!-- pode ser assim ou --></div>
+    <div><img [src]="fakeUrlImg"></div>
+    
+</section>

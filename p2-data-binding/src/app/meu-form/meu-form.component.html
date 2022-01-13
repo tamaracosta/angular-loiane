@@ -1,0 +1,23 @@
+<section>
+    <h3>TWO WAY DATA BINDING</h3>
+    <input type="text"
+    #valorAtual
+     [value]="nome"
+     (input)="nome = valorAtual.value"
+     /> 
+     
+     <input type="text"
+     [(ngModel)]="nome"
+     >
+     
+    <br>
+    <p>Você digitou: {{ nome }}</p>
+
+    <div>
+        <input type="text" [(ngModel)]="pessoa.nome">
+        <input type="number" [(ngModel)]="pessoa.idade">
+        <p>Meu nome é {{ pessoa.nome }}</p>
+        <p>Minha idade é {{ pessoa.idade }} anos.</p>
+    </div>
+  
+</section>

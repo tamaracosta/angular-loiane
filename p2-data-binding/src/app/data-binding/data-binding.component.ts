@@ -7,16 +7,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataBindingComponent implements OnInit {
 
-  url : string = 'http://loiane.com';
+  url: string = 'http://loiane.com';
   cursoAngular: boolean = true;
-  fakeUrlImg : string = 'https://s2.drogasil.com.br/skin/frontend/drogasil/default/images/media/logo.png';
+  fakeUrlImg: string = 'https://s2.drogasil.com.br/skin/frontend/drogasil/default/images/media/logo.png';
+  valorAtual: string = "";
+  valorSalvo: string = "";
+  isMouseOver : boolean = false;
 
-  getValor(){
+  getValor() {
     return 1;
   }
 
-  getCurtirAngular(){
+  getCurtirAngular() {
     return true;
+  }
+
+  botaoClicado() {
+    alert('botão clicado')
+  }
+
+  onKeyUp(evento: KeyboardEvent) {
+    this.valorAtual = (<HTMLInputElement>evento.target).value
+  }
+
+  salvarValor(valor: string){
+    this.valorSalvo = valor
+  }
+
+  onMouseOverOut(){
+    this.isMouseOver = !this.isMouseOver
   }
   constructor() { }
 

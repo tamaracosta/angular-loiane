@@ -78,6 +78,8 @@
     <article>
         <h3>INPUT/OUTPUT PROPERTIES</h3>
         <app-curso [nomeCurso]="nomeDoCurso"></app-curso>
+        <contador [valor]="valorInicial" (mudouValor)="onMudouValor($event)"></contador>
+
     </article>
     
 

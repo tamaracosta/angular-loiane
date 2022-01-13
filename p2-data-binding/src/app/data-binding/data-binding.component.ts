@@ -12,9 +12,10 @@ export class DataBindingComponent implements OnInit {
   fakeUrlImg: string = 'https://s2.drogasil.com.br/skin/frontend/drogasil/default/images/media/logo.png';
   valorAtual: string = "";
   valorSalvo: string = "";
-  isMouseOver : boolean = false;
-  nomeDoCurso : string = "Angular";
-  
+  isMouseOver: boolean = false;
+  nomeDoCurso: string = "Angular";
+  valorInicial: number = 15;
+
   getValor() {
     return 1;
   }
@@ -31,15 +32,17 @@ export class DataBindingComponent implements OnInit {
     this.valorAtual = (<HTMLInputElement>evento.target).value
   }
 
-  salvarValor(valor: string){
+  salvarValor(valor: string) {
     this.valorSalvo = valor
   }
 
-  onMouseOverOut(){
+  onMouseOverOut() {
     this.isMouseOver = !this.isMouseOver
   }
 
-
+  onMudouValor(evento: any) {
+    console.log(evento.novoValor)
+  }
   constructor() { }
 
   ngOnInit(): void {

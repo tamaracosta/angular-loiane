@@ -1,0 +1,26 @@
+<h2> ngSwitch </h2>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="aba == 'home' " (click)="aba = 'home'">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="aba == 'features' " (click)="aba = 'features'">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="aba == 'pricing' " (click)="aba = 'pricing'" >Pricing</a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+
+  <div [ngSwitch]="aba">
+      <p *ngSwitchCase=" 'features' ">Features ativado</p>
+      <p *ngSwitchCase=" 'pricing' ">Pricing ativado</p>
+      <p *ngSwitchDefault>Padrão Home</p>
+  </div>

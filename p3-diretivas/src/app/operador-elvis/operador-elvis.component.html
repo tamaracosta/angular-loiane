@@ -1,0 +1,18 @@
+<h2>Operador Elvis</h2>
+<p>Descrição: {{ tarefa.descricao }}</p>
+
+<h4>Sem usar o operador elvis</h4>
+<p>Responsável: {{ tarefa.responsavel != null ? 'tarefa.responsavel.nome' : '' }}</p>
+
+
+<h4>Usando operador elvis</h4>
+<p>Responsável: {{ tarefa.responsavel?.nome }}</p>
+<!-- se tivesse um objeto assim 
+tarefa = {
+    responsavel : {
+        usuario : null
+    }
+}
+
+então ficaria Responsável: {{ tarefa.responsavel?.usuario?.nome }}
+-->

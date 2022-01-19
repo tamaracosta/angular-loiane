@@ -11,3 +11,14 @@
 <div>
     <p [highlight]="'red'" [defaultColor]="'green'">Texto com highlight com cores customizadas</p>
 </div>
+
+<h2>Diretiva ngElse criada</h2>
+
+<div *ngIf="mostrarCursos" >
+    Lista de Cursos a mostrar:    
+</div>
+<div *ngElse="mostrarCursos" >
+    Não há lista de cursos    
+</div>
+
+<button (click)="onMostrarCursos()">Mostrar ou esconder cursos</button>

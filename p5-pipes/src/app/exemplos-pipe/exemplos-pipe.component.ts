@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-exemplos-pipe',
   templateUrl: './exemplos-pipe.component.html',
@@ -31,6 +32,10 @@ export class ExemplosPipeComponent implements OnInit {
       (v:string) => v.toLocaleLowerCase().includes(filter)
     );
   }
+
+  valorAsync = new Promise((resolve, reject)=> {
+    setTimeout(() => resolve('Valor assíncrono'), 2000)
+  });
 
   constructor() { }
 

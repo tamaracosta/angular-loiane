@@ -14,6 +14,7 @@ import { CursosComponent } from './cursos/cursos.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
+import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { routing } from './app.routing';
     AppComponent,
     CursosComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    CursoDetalheComponent
   ],
   imports: [
     BrowserModule,

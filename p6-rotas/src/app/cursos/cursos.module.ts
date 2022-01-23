@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -9,14 +8,15 @@ import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
 import { CursoNaoEncontradoComponent } from './curso-nao-encontrado/curso-nao-encontrado.component';
 import { CursosComponent } from './cursos.component';
 import { CursosService } from './cursos.service';
+import { CursosRoutingModule } from './cursos.routing.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule,
         MatIconModule,
         MatListModule,
-        MatSliderModule
+        MatSliderModule,
+        CursosRoutingModule
     ],
     exports: [],
     declarations: [

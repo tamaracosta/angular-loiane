@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 //import { routing } from './app.routing';
 import { AppRoutingModule } from './app.routing.module';
 import { CursosModule } from './cursos/cursos.module';
+import { AlunosModule } from './alunos/alunos.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CursosModule } from './cursos/cursos.module';
     MatListModule,
     //routing,
     CursosModule,
+    AlunosModule,
     AppRoutingModule,
     
   ],

@@ -1,4 +1,5 @@
 <h4>Lista de Cursos</h4>
+<h5>Página : {{ pagina }}</h5>
 <mat-selection-list #shoes>
     <a>
         <mat-list-option *ngFor="let curso of cursos" [routerLink]="['/curso', curso.id]" >
@@ -6,3 +7,5 @@
         </mat-list-option>
     </a>
   </mat-selection-list>
+
+<button (click)="proximaPagina()">Próxima Página</button>

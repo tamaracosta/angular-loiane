@@ -19,11 +19,11 @@
                     school
                 </i> Cursos
             </a>
-            <a mat-list-item [routerLink]="['curso', idCurso.value]" routerLinkActive="router-link-active">
+            <!-- <a mat-list-item [routerLink]="['curso', idCurso.value]" routerLinkActive="router-link-active">
                 <i class="material-icons">
                     school
                 </i> Curso com Id
-            </a>
+            </a> -->
             <a mat-list-item [routerLink]="['/alunos']" routerLinkActive="router-link-active">
                 <i class="material-icons">
                     school
@@ -31,8 +31,8 @@
             </a>
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content class="content">
+    <!-- <mat-sidenav-content class="content">
         <p>Entre com o id do Curso</p>
-        <input #idCurso (input)="0">
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
+        <input #idCurso (input)="0"> -->
+        <router-outlet></router-outlet> 
+    <!-- </mat-sidenav-content>  -->

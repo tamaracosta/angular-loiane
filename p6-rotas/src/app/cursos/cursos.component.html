@@ -2,7 +2,7 @@
 <h5>Página : {{ pagina }}</h5>
 <mat-selection-list >
     <a>
-        <mat-list-option *ngFor="let curso of cursos" [routerLink]="['/curso', curso.id]" >
+        <mat-list-option *ngFor="let curso of cursos" [routerLink]="['/cursos', curso.id]" >
         {{ curso.nome }}
         </mat-list-option>
     </a>

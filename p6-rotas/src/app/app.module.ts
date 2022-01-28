@@ -21,6 +21,7 @@ import { AlunosGuard } from './guards/alunos.guard';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,7 @@ import { AlunosGuard } from './guards/alunos.guard';
     AuthService, 
     AuthGuard,
     CursosGuard,
-    AlunosGuard
+    AlunosGuard    
    ],
   bootstrap: [ AppComponent ]
 })

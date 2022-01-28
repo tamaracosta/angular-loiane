@@ -10,9 +10,10 @@ import { AlunosService } from '../alunos.service';
 })
 export class AlunoFormComponent implements OnInit {
 
-  aluno : any
-  inscricao : Subscription = new Subscription;
-  
+  aluno: any
+  inscricao: Subscription = new Subscription;
+  private formMudou: boolean = false;
+    
   constructor(private route : ActivatedRoute, private alunosService : AlunosService) { }
 
   ngOnInit(): void {
@@ -29,6 +30,18 @@ export class AlunoFormComponent implements OnInit {
   
   ngOnDestroy() {
     this.inscricao.unsubscribe()
+  }
+
+  onInput(){
+    this.formMudou = true;
+  }
+
+  podeMudar(){
+
+    if(this.formMudou){
+      return confirm('Deseja sair dessa página?')
+    }
+    return true;
   }
 
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AlunosComponent } from './alunos.component';
@@ -11,6 +12,7 @@ import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
 import { AlunosRoutingModule } from './alunos.routing.module';
 import { AlunosService } from './alunos.service';
 import { AlunosDeactiveGuard } from '../guards/alunos-deactivate.guard';
+import { AlunoDetalheResolver } from './guards/aluno-detalhe.resolver';
 
 
 
@@ -21,6 +23,7 @@ import { AlunosDeactiveGuard } from '../guards/alunos-deactivate.guard';
         MatFormFieldModule,
         FormsModule,
         MatButtonModule,
+        MatInputModule,
         AlunosRoutingModule
     ],
     exports: [],
@@ -31,7 +34,8 @@ import { AlunosDeactiveGuard } from '../guards/alunos-deactivate.guard';
     ],
     providers: [
         AlunosService,
-        AlunosDeactiveGuard
+        AlunosDeactiveGuard,
+        AlunoDetalheResolver
     ],
 })
 export class AlunosModule { }

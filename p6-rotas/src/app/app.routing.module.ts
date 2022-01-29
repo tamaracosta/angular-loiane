@@ -24,6 +24,7 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard] 
     },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '**', component: PaginaNaoEncontradaComponent }
 ]
 
 @NgModule({

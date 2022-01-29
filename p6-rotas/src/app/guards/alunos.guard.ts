@@ -4,21 +4,10 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export class AlunosGuard implements CanActivateChild {
-    //     canActivateChild(
-    //         route: ActivatedRouteSnapshot,
-    //         state: RouterStateSnapshot
-    //     ): Observable<boolean> | Promise<boolean> | boolean {
-    //         return true;
-    //     }
-    // }
-
-    canActivateChild(
+       canActivateChild(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<boolean> | boolean {
-
-        //console.log(route);
-        //console.log(state);
 
         console.log('AlunosGuard: Guarda de rota filha');
 

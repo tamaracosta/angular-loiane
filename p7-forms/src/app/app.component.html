@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <span>
+        <a mat-list-item [routerLink]="['/templateForm']" routerLinkActive="router-link-active">
+            Form - template drive
+        </a>
+    </span>
+
+    <span style="margin: 10px;">
+        <a mat-list-item [routerLink]="['/dataForm']" routerLinkActive="router-link-active">
+            Form - data driven
+        </a>
+    </span>
+
+</mat-toolbar>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

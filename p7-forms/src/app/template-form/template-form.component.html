@@ -1,20 +1,81 @@
 <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
-    <mat-form-field appearance="fill">
-        <mat-label>Nome</mat-label>
-        <input matInput name="nome" [ngModel]="usuario.nome" required #nome="ngModel">
-        <mat-error *ngIf="!nome.invalid && nome.touched">
-            Please 
-        </mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput name="email" [(ngModel)]="usuario.email" required email>
-        
-    </mat-form-field>
- 
-    <button mat-raised-button color="primary" [disabled]="!formulario.valid">Primary</button>
 
-    <app-form-debug [form]="formulario"></app-form-debug>
+
+    <mat-grid-list cols="3" rowHeight="3:1">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input matInput name="nome" [ngModel]="usuario.nome" required #nome="ngModel">
+                <div *ngIf="!nome.valid && nome.touched">Campo obrigatório</div>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput name="email" [(ngModel)]="usuario.email" required #email="ngModel">
+                <div *ngIf="!email.valid && email.touched">Campo obrigatório</div>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>CEP</mat-label>
+                <input matInput name="cep" ngModel required #cep="ngModel">
+                <div *ngIf="!cep.valid && cep.touched">Campo obrigatório</div>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Número</mat-label>
+                <input matInput name="numero" ngModel required #numero="ngModel">
+                <div *ngIf="!numero.valid && numero.touched">Campo obrigatório</div>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Rua</mat-label>
+                <input matInput name="rua" ngModel required #rua="ngModel">
+                <div *ngIf="!rua.valid && rua.touched">Campo obrigatório</div>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Bairro</mat-label>
+                <input matInput name="bairro" ngModel required #bairro="ngModel">
+                <div *ngIf="!bairro.valid && bairro.touched">Campo obrigatório</div>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Cidade</mat-label>
+                <input matInput name="cidade" ngModel required #cidade="ngModel">
+                <div *ngIf="!cidade.valid && cidade.touched">Campo obrigatório</div>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Estado</mat-label>
+                <input matInput name="estado" ngModel required #estado="ngModel">
+                <div *ngIf="!estado.valid && estado.touched">Campo obrigatório</div>
+            </mat-form-field>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+    <div style="text-align: center;">
+        <div>
+            <button mat-raised-button color="primary" [disabled]="!formulario.valid">Primary</button>
+        </div>
+        <div>
+            <app-form-debug [form]="formulario"></app-form-debug>
+        </div>
+    </div>
+
 </form>
 
 <!-- [ngModel]="usuario.nome" - assim só inicializa o valor no input na tela-->

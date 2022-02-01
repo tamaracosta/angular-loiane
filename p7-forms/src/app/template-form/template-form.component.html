@@ -1,13 +1,19 @@
 <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
     <mat-form-field appearance="fill">
         <mat-label>Nome</mat-label>
-        <input matInput name="nome" [ngModel]="usuario.nome" required>
+        <input matInput name="nome" [ngModel]="usuario.nome" required #nome="ngModel">
+        <mat-error *ngIf="!nome.invalid && nome.touched">
+            Please 
+        </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput name="email" [(ngModel)]="usuario.email" required email>
+        
     </mat-form-field>
-    <button mat-raised-button color="primary">Primary</button>
+ 
+    <button mat-raised-button color="primary" [disabled]="!formulario.valid">Primary</button>
 </form>
+
 <!-- [ngModel]="usuario.nome" - assim só inicializa o valor no input na tela-->
 <!-- [(ngModel)]="usuario.nome" - assim inicializa e atualiza como escreveu-->

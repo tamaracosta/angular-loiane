@@ -4,7 +4,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { MatGridListModule } from '@angular/material/grid-list'
+import { MatGridListModule } from '@angular/material/grid-list';
+import { HttpClientModule } from '@angular/common/http';
 
 import { TemplateFormComponent } from './template-form.component';
 import { FormDebugComponent } from '../form-debug/form-debug.component';
@@ -23,7 +24,8 @@ import { FormDebugComponent } from '../form-debug/form-debug.component';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    MatGridListModule
+    MatGridListModule,
+    HttpClientModule
   ]
 })
 export class TemplateFormModule { }

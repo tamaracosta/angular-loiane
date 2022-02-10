@@ -21,7 +21,7 @@
         <mat-grid-tile>
             <mat-form-field appearance="fill">
                 <mat-label>CEP</mat-label>
-                <input matInput name="cep" ngModel required #cep="ngModel">
+                <input matInput name="cep" ngModel required #cep="ngModel" (blur)="consultaCEP(cep.value)">
                 <div *ngIf="!cep.valid && cep.touched">Campo obrigatório</div>
             </mat-form-field>
         </mat-grid-tile>

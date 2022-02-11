@@ -20,10 +20,9 @@
 
     </mat-grid-list>
     <div style="text-align: center;">
-        <div>
-            <button mat-raised-button color="primary">Submit</button>
-        </div>
-
+        <button mat-raised-button color="primary">Enviar</button>               
+        <button mat-raised-button color="warn" (click)="resetar()">Cancelar</button>
+        
     </div>
     <div style="text-align: center;">
         <app-form-debug [form]="formulario"></app-form-debug>

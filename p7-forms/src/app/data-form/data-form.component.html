@@ -20,7 +20,7 @@
         <mat-grid-tile>
             <mat-form-field appearance="fill">
                 <mat-label>CEP</mat-label>
-                <input matInput formControlName="cep" >
+                <input matInput formControlName="cep" (blur)="consultaCEP()">
                 
             </mat-form-field>
         </mat-grid-tile>

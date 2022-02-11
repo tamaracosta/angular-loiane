@@ -1,1 +1,31 @@
-<p>data-form works!</p>
+<form [formGroup]="formulario">
+
+    <mat-grid-list cols="3" rowHeight="3:1">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome" required>
+
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" required>
+
+            </mat-form-field>
+        </mat-grid-tile>
+
+
+    </mat-grid-list>
+    <div style="text-align: center;">
+        <div>
+            <button mat-raised-button color="primary">Submit</button>
+        </div>
+
+    </div>
+    <div style="text-align: center;">
+        <app-form-debug [form]="formulario"></app-form-debug>
+    </div>
+</form>

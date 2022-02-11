@@ -9,13 +9,15 @@ import { map } from 'rxjs';
 })
 export class TemplateFormComponent implements OnInit {
 
-  usuario : any = {
+  usuario: any = {
     nome: null,
     email: null,
   }
-  onSubmit(form : any){
-    console.log(form)
-    console.log(this.usuario)
+
+  onSubmit(form: any) {
+    this.http.post('https://httpbin.org/post', JSON.stringify(form.value))
+      .pipe(map(dados => dados))
+      .subscribe(dados => console.log(dados))
   }
 
   constructor(private http: HttpClient) { }
@@ -44,8 +46,8 @@ export class TemplateFormComponent implements OnInit {
 
   }
 
-  populaDadosForm(dados: any, formulario: any){
-    alert(dados.cep)
+  populaDadosForm(dados: any, formulario: any) {
+
     // form.setValue( {
     //     nome: null,
     //     email: null,
@@ -57,19 +59,19 @@ export class TemplateFormComponent implements OnInit {
     //       cidade: dados.localidade ,
     //       estado: dados.uf
     //     }
-                   
+
     // })
 
     formulario.form.patchValue({
-     
-        rua: dados.logradouro,
-        complemento: dados.complemento,
-        bairro: dados.bairro,
-        cidade: dados.localidade,
-        estado: dados.uf
-      
+
+      rua: dados.logradouro,
+      complemento: dados.complemento,
+      bairro: dados.bairro,
+      cidade: dados.localidade,
+      estado: dados.uf
+
     });
-  
+
   }
 
   resetaDadosForm(formulario: any) {
@@ -83,7 +85,7 @@ export class TemplateFormComponent implements OnInit {
       }
     });
   }
-  
+
 }
 
 

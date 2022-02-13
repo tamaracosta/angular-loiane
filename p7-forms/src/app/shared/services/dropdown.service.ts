@@ -36,5 +36,19 @@ constructor(
     ];
   }
 
+  // getNewsletter() {
+  //   return [
+  //     { valor: 's', desc: 'Sim' },
+  //     { valor: 'n', desc: 'Não' }
+  //   ];
+  // }
+
+  getNewsletter() {
+    return [
+      { id:1, valor:'S', desc: 'Sim' },
+      { id:0, valor:'N', desc: 'Não' },
+    ];
+  }
+
 }
 

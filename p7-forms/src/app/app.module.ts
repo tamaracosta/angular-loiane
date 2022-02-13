@@ -10,12 +10,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataFormComponent } from './data-form/data-form.component';
 import { TemplateFormModule } from './template-form/template-form.module';
 import { DataFormModule } from './data-form/data-form.module';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { DataFormModule } from './data-form/data-form.module';
     ReactiveFormsModule,
     DataFormModule,
     MatGridListModule,
+    MatRadioModule,
     MatSelectModule,
     AppRoutingModule,
     BrowserAnimationsModule,

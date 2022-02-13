@@ -8,6 +8,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 
@@ -22,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatGridListModule,
     SharedModule,
     MatSelectModule,
+    MatRadioModule,
     HttpClientModule
   ],
   exports: [

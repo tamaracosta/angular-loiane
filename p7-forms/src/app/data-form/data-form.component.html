@@ -93,13 +93,25 @@
           </mat-form-field>
         </mat-grid-tile>
 
+        <mat-grid-tile>
+
+          <mat-radio-group aria-label="Select an option">
+            <mat-label >Newsletter</mat-label><br><br>
+            <div *ngFor="let item of newsletterOp" >
+              <mat-radio-button ngDefaultControl id={{item.id}} [value]="item.valor" formControlName="newsLetter">{{ item.desc }}</mat-radio-button>
+            </div>
+
+
+          </mat-radio-group>
+
+        </mat-grid-tile>
 
     </mat-grid-list>
     <div style="text-align: center;">
         <button mat-raised-button color="primary">Enviar</button>
         <button mat-raised-button color="warn" (click)="resetar()">Cancelar</button>
-        <button mat-raised-button color="warn" (click)="setarCargo()">Cargo</button>
-        <button mat-raised-button color="warn" (click)="setarTecnologias()">tecnologias</button>
+        <button mat-raised-button (click)="setarCargo()">Cargo</button>
+        <button mat-raised-button (click)="setarTecnologias()">tecnologias</button>
 
     </div>
     <div style="text-align: center;">

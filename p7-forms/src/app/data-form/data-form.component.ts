@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs';
+import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 
 @Component({
   selector: 'app-data-form',
@@ -18,7 +19,8 @@ export class DataFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private dropDownService : DropdownService
+    private dropDownService : DropdownService,
+    private cepService: ConsultaCepService
   ) { }
 
   ngOnInit(): void {
@@ -77,42 +79,37 @@ export class DataFormComponent implements OnInit {
 
     //Verifica se campo cep possui valor informado.
     if (cep != null && cep != "") {
-      //Expressão regular para validar o CEP.
-      var validacep = /^[0-9]{8}$/;
-
-      //Valida o formato do CEP.
-      if (validacep.test(cep)) {
-        this.resetaDadosForm()
-        this.http.get(`https://viacep.com.br/ws/${cep}/json`)
-          .pipe(map(dados => dados))
-          .subscribe(dados => this.populaDadosForm(dados))
+      this.cepService.consultaCEP(cep)
+      .pipe(map(dados => dados))
+      .subscribe(dados => this.populaDadosForm(dados))
       }
+    }
+
+    resetaDadosForm() {
+      this.formulario.patchValue({
+        endereco: {
+          rua: null,
+          complemento: null,
+          bairro: null,
+          cidade: null,
+          estado: null
+        }
+      });
+    }
+
+    populaDadosForm(dados: any) {
+      this.formulario.patchValue({
+        rua: dados.logradouro,
+        complemento: dados.complemento,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
+        estado: dados.uf
+
+      });
+
     }
 
   }
 
-  resetaDadosForm() {
-    this.formulario.patchValue({
-      endereco: {
-        rua: null,
-        complemento: null,
-        bairro: null,
-        cidade: null,
-        estado: null
-      }
-    });
-  }
 
-  populaDadosForm(dados: any) {
-    this.formulario.patchValue({
-      rua: dados.logradouro,
-      complemento: dados.complemento,
-      bairro: dados.bairro,
-      cidade: dados.localidade,
-      estado: dados.uf
 
-    });
-
-  }
-
-}

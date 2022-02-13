@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +21,7 @@ import { DataFormModule } from './data-form/data-form.module';
   declarations: [
     AppComponent,
     DataFormComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -35,6 +36,7 @@ import { DataFormModule } from './data-form/data-form.module';
     ReactiveFormsModule,
     DataFormModule,
     MatGridListModule,
+    MatSelectModule,
     AppRoutingModule,
     BrowserAnimationsModule,
   ],

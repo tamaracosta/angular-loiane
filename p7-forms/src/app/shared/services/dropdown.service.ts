@@ -15,7 +15,7 @@ constructor(
   // getEstadoBr() { return this.http.get<EstadoBr>('assets/dados/estadosBr.json').pipe();}
   getEstadoBr(): Observable<any> {
     return this.http.get('assets/dados/estadosBr.json')
-    .pipe(map(res => res));
+
   }
 
 }

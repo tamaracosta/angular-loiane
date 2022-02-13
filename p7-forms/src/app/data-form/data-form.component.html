@@ -21,7 +21,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>CEP</mat-label>
                 <input matInput formControlName="cep" (blur)="consultaCEP()">
-                
+
             </mat-form-field>
         </mat-grid-tile>
 
@@ -29,7 +29,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Número</mat-label>
                 <input matInput formControlName="numero" >
-                
+
             </mat-form-field>
         </mat-grid-tile>
 
@@ -37,7 +37,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Rua</mat-label>
                 <input matInput formControlName="rua">
-                
+
             </mat-form-field>
         </mat-grid-tile>
 
@@ -45,7 +45,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Bairro</mat-label>
                 <input matInput formControlName="bairro">
-                
+
             </mat-form-field>
         </mat-grid-tile>
 
@@ -53,24 +53,28 @@
             <mat-form-field appearance="fill">
                 <mat-label>Cidade</mat-label>
                 <input matInput formControlName="cidade">
-               
+
             </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field appearance="fill">
                 <mat-label>Estado</mat-label>
-                <input matInput formControlName="estado" >
-                
+                <mat-select  formControlName="estado">
+                  <mat-option *ngFor="let estado of estados" [value]="estado.sigla" >
+                    {{estado.nome}}
+                  </mat-option>
+                </mat-select>
+
             </mat-form-field>
         </mat-grid-tile>
 
 
     </mat-grid-list>
     <div style="text-align: center;">
-        <button mat-raised-button color="primary">Enviar</button>               
+        <button mat-raised-button color="primary">Enviar</button>
         <button mat-raised-button color="warn" (click)="resetar()">Cancelar</button>
-        
+
     </div>
     <div style="text-align: center;">
         <app-form-debug [form]="formulario"></app-form-debug>

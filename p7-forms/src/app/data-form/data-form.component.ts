@@ -3,7 +3,7 @@ import { EstadoBr } from './../shared/models/estado-br';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 
 @Component({
@@ -14,7 +14,8 @@ import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 export class DataFormComponent implements OnInit {
 
   formulario: any = FormGroup;
-  estados: EstadoBr[] = [];
+  // estados: EstadoBr[] = [];
+  estados!:Observable<EstadoBr[]>
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,10 +26,12 @@ export class DataFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.dropDownService.getEstadoBr()
-    .subscribe((dados: EstadoBr[]) => {
-      this.estados = dados
-    });
+    this.estados = this.dropDownService.getEstadoBr()
+
+    // this.dropDownService.getEstadoBr()
+    // .subscribe((dados: EstadoBr[]) => {
+    //   this.estados = dados
+    // });
 
 
     // });

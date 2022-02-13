@@ -38,12 +38,22 @@ export class DataFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+    if(this.formulario.valid){
+      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
       .pipe(map(dados => dados))
       .subscribe(dados => {
         console.log(dados)
         this.resetar()
       })
+    } else {
+      console.log('invalido')
+      Object.keys(this.formulario.controls).forEach(campo => {
+        console.log(campo)
+        const controle = this.formulario.get(campo);
+        controle.markAsDirty();
+      })
+    }
+    
       
   }
 

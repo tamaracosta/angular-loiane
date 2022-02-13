@@ -18,5 +18,13 @@ constructor(
 
   }
 
+  getCadastro(){
+    return [
+      {cargo: 'dev', nivel: 'Junior', desc: 'Dev Jr.'},
+      {cargo: 'dev', nivel: 'Pleno', desc: 'Dev Pl.'},
+      {cargo: 'dev', nivel: 'Senior', desc: 'Dev Sr.'}
+    ]
+  }
+
 }
 

@@ -69,11 +69,24 @@
             </mat-form-field>
         </mat-grid-tile>
 
+        <mat-grid-tile>
+          <mat-form-field appearance="fill">
+              <mat-label>Cargo</mat-label>
+              <mat-select  formControlName="cargo" [compareWith]="compararCargos">
+                <mat-option *ngFor="let cargo of cargos" [value]="cargo">
+                  {{cargo.desc}}
+                </mat-option>
+              </mat-select>
+
+          </mat-form-field>
+      </mat-grid-tile>
+
 
     </mat-grid-list>
     <div style="text-align: center;">
         <button mat-raised-button color="primary">Enviar</button>
         <button mat-raised-button color="warn" (click)="resetar()">Cancelar</button>
+        <button mat-raised-button color="warn" (click)="setarCargo()">Cancelar</button>
 
     </div>
     <div style="text-align: center;">

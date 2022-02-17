@@ -2,9 +2,10 @@ import { DropdownService } from './../shared/services/dropdown.service';
 import { EstadoBr } from './../shared/models/estado-br';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
+import { FormValidations } from '../shared/form-validations';
 
 @Component({
   selector: 'app-data-form',
@@ -52,7 +53,7 @@ export class DataFormComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       nome: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      cep: [null, Validators.required],
+      cep: [null, [Validators.required, FormValidations.cepValidator]],
       numero: [null, Validators.required],
       rua: [null, Validators.required],
       bairro: [null, Validators.required],
@@ -64,6 +65,7 @@ export class DataFormComponent implements OnInit {
       termos: [null, Validators.pattern('true')],
       // frameworks: [null]
       frameworks: this.buildFrameworks()
+
 
     })
 
@@ -158,8 +160,23 @@ export class DataFormComponent implements OnInit {
 
     buildFrameworks(){
     const values = this.frameworks.map(v => new FormControl(false));
-    return this.formBuilder.array(values);
+    return this.formBuilder.array(values, FormValidations.minSelectedCheckboxes(1));
     }
+
+    verificaValidTouched(campo: string) {
+      return (
+        !this.formulario.get(campo).valid &&
+        (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
+      );
+    }
+
+    verificaRequired(campo: string) {
+      return (
+        !this.formulario.get(campo).hasError('required') &&
+        (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
+      );
+    }
+
 
 
     // getFrameworksControls() {

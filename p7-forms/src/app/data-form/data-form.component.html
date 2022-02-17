@@ -23,6 +23,10 @@
                 <input matInput formControlName="cep" (blur)="consultaCEP()">
 
             </mat-form-field>
+            <app-campo-control-erro [mostrarErro]="verificaValidTouched('cep')" msgErro="CEP é obrigatório.">
+            </app-campo-control-erro>
+            <app-campo-control-erro [mostrarErro]="formulario.get('cep').hasError('cepInvalido')" msgErro="CEP inválido.">
+            </app-campo-control-erro>
         </mat-grid-tile>
 
         <mat-grid-tile>
@@ -122,6 +126,7 @@
               <mat-checkbox type="checkbox" [formControlName]="i"> {{ frameworks[i] }} </mat-checkbox>
 
           </div>
+
       </mat-grid-tile>
 
 

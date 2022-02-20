@@ -13,8 +13,16 @@
             <mat-form-field appearance="fill">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email">
-
             </mat-form-field>
+            <app-campo-control-erro [mostrarErro]="formulario.get('email').status === 'PENDING'"
+            msgErro="Validando email...">
+          </app-campo-control-erro>
+          <app-campo-control-erro [mostrarErro]="formulario.get('email').status === 'VALID'"
+            msgErro="Email válido!">
+          </app-campo-control-erro>
+          <app-campo-control-erro [mostrarErro]="formulario.get('email').hasError('emailInvalido')"
+            msgErro="Email já cadastrado!">
+          </app-campo-control-erro>
         </mat-grid-tile>
 
         <mat-grid-tile>
@@ -24,6 +32,7 @@
           </mat-form-field>
           <app-campo-control-erro [mostrarErro]="formulario.get('confirmarEmail').hasError('equalsTo')" msgErro="Os emails não são iguais.">
           </app-campo-control-erro>
+
       </mat-grid-tile>
 
         <mat-grid-tile>

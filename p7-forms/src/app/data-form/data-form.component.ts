@@ -6,6 +6,7 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 import { map, Observable } from 'rxjs';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { FormValidations } from '../shared/form-validations';
+import { VerificarEmailService } from './services/verificar-email.service';
 
 @Component({
   selector: 'app-data-form',
@@ -26,11 +27,12 @@ export class DataFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private dropDownService : DropdownService,
-    private cepService: ConsultaCepService
+    private cepService: ConsultaCepService,
+    private verificarEmailService: VerificarEmailService
   ) { }
 
   ngOnInit(): void {
-
+   // this.verificarEmailService.verificarEmail('').subscribe()
     this.estados = this.dropDownService.getEstadoBr();
     this.cargos = this.dropDownService.getCadastro();
     this.tecnologias = this.dropDownService.getTecnologias();
@@ -52,7 +54,7 @@ export class DataFormComponent implements OnInit {
 
     this.formulario = this.formBuilder.group({
       nome: [null, Validators.required],
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.email], [this.validarEmail.bind(this)]],
       confirmarEmail: [null, [FormValidations.equalsTo('email')]],
       cep: [null, [Validators.required, FormValidations.cepValidator]],
       numero: [null, Validators.required],
@@ -176,6 +178,11 @@ export class DataFormComponent implements OnInit {
         !this.formulario.get(campo).hasError('required') &&
         (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
       );
+    }
+
+    validarEmail(formControl: FormControl) {
+      return this.verificarEmailService.verificarEmail(formControl.value)
+        .pipe(map(emailExiste => emailExiste ? { emailInvalido: true } : null));
     }
 
 

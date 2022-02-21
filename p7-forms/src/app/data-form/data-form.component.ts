@@ -3,7 +3,7 @@ import { EstadoBr } from './../shared/models/estado-br';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { map, Observable } from 'rxjs';
+import { distinctUntilChanged, EMPTY, map, Observable, switchMap, tap } from 'rxjs';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { FormValidations } from '../shared/form-validations';
 import { VerificarEmailService } from './services/verificar-email.service';
@@ -71,6 +71,17 @@ export class DataFormComponent implements OnInit {
 
 
     })
+
+    this.formulario.get('cep').statusChanges
+    .pipe(
+      distinctUntilChanged(),
+      tap(value => console.log('status CEP:', value)),
+      switchMap(status => status === 'VALID' ?
+        this.cepService.consultaCEP(this.formulario.get('cep').value)
+        : EMPTY
+      )
+    )
+    .subscribe((dados: any) => dados ? this.populaDadosForm(dados) : {});
 
 
 

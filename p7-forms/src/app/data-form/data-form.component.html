@@ -5,8 +5,9 @@
             <mat-form-field appearance="fill">
                 <mat-label>Nome</mat-label>
                 <input matInput formControlName="nome">
-
+                <app-error-msg [control]="formulario.get('nome')" label="Nome"></app-error-msg>
             </mat-form-field>
+
         </mat-grid-tile>
 
         <mat-grid-tile>
@@ -14,6 +15,7 @@
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email">
             </mat-form-field>
+            <app-error-msg [control]="formulario.get('email')" label="Email"></app-error-msg>
             <app-campo-control-erro [mostrarErro]="formulario.get('email').status === 'PENDING'"
             msgErro="Validando email...">
           </app-campo-control-erro>
@@ -30,8 +32,9 @@
               <mat-label>Confirmar Email</mat-label>
               <input matInput formControlName="confirmarEmail">
           </mat-form-field>
-          <app-campo-control-erro [mostrarErro]="formulario.get('confirmarEmail').hasError('equalsTo')" msgErro="Os emails não são iguais.">
-          </app-campo-control-erro>
+          <!-- <app-campo-control-erro [mostrarErro]="formulario.get('confirmarEmail').hasError('equalsTo')" msgErro="Os emails não são iguais.">
+          </app-campo-control-erro> -->
+          <app-error-msg [control]="formulario.get('confirmarEmail')" label="Confirmar Email"></app-error-msg>
 
       </mat-grid-tile>
 
@@ -41,17 +44,18 @@
                 <input matInput formControlName="cep" (blur)="consultaCEP()">
 
             </mat-form-field>
-            <app-campo-control-erro [mostrarErro]="verificaValidTouched('cep')" msgErro="CEP é obrigatório.">
+            <!-- <app-campo-control-erro [mostrarErro]="verificaValidTouched('cep')" msgErro="CEP é obrigatório.">
             </app-campo-control-erro>
             <app-campo-control-erro [mostrarErro]="formulario.get('cep').hasError('cepInvalido')" msgErro="CEP inválido.">
-            </app-campo-control-erro>
+            </app-campo-control-erro> -->
+            <app-error-msg [control]="formulario.get('cep')" label="CEP"></app-error-msg>
         </mat-grid-tile>
 
         <mat-grid-tile>
             <mat-form-field appearance="fill">
                 <mat-label>Número</mat-label>
                 <input matInput formControlName="numero" >
-
+                <app-error-msg [control]="formulario.get('numero')" label="Número"></app-error-msg>
             </mat-form-field>
         </mat-grid-tile>
 
@@ -59,7 +63,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Rua</mat-label>
                 <input matInput formControlName="rua">
-
+                <app-error-msg [control]="formulario.get('rua')" label="Rua"></app-error-msg>
             </mat-form-field>
         </mat-grid-tile>
 
@@ -67,6 +71,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Bairro</mat-label>
                 <input matInput formControlName="bairro">
+                <app-error-msg [control]="formulario.get('bairro')" label="Bairro"></app-error-msg>
 
             </mat-form-field>
         </mat-grid-tile>
@@ -75,6 +80,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Cidade</mat-label>
                 <input matInput formControlName="cidade">
+                <app-error-msg [control]="formulario.get('cidade')" label="Cidade"></app-error-msg>
 
             </mat-form-field>
         </mat-grid-tile>
@@ -87,7 +93,7 @@
                     {{estado.nome}}
                   </mat-option>
                 </mat-select>
-
+                <app-error-msg [control]="formulario.get('estado')" label="Estado"></app-error-msg>
             </mat-form-field>
         </mat-grid-tile>
 
@@ -126,6 +132,7 @@
 
         <mat-grid-tile>
           <mat-checkbox class="example-margin" formControlName="termos">Aceito os termos</mat-checkbox>
+          <app-error-msg [control]="formulario.get('termos')" label="Aceito os termos"></app-error-msg>
         </mat-grid-tile>
 
 
@@ -142,7 +149,7 @@
           <div class="checkbox"  formArrayName="frameworks"
               *ngFor="let item of formulario.get('frameworks')['controls']; let i = index">
               <mat-checkbox type="checkbox" [formControlName]="i"> {{ frameworks[i] }} </mat-checkbox>
-
+              <app-error-msg [control]="formulario.get('frameworks')" label="Frameworks"></app-error-msg>
           </div>
 
       </mat-grid-tile>

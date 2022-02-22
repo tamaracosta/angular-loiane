@@ -1,14 +1,21 @@
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
     <mat-grid-list cols="3" rowHeight="3:1">
-        <mat-grid-tile>
+        <!-- <mat-grid-tile>
             <mat-form-field appearance="fill">
                 <mat-label>Nome</mat-label>
                 <input matInput formControlName="nome">
                 <app-error-msg [control]="formulario.get('nome')" label="Nome"></app-error-msg>
             </mat-form-field>
+        </mat-grid-tile>  -->
 
+        <!-- refatorado mas sem css material angular -->
+        <mat-grid-tile>
+          <app-input-field class="col-sm-12" formControlName="nome"
+          id="nome" label="Nome" [control]="formulario.get('nome')">
+          </app-input-field>
         </mat-grid-tile>
+
 
         <mat-grid-tile>
             <mat-form-field appearance="fill">

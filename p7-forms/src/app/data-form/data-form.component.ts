@@ -7,15 +7,16 @@ import { distinctUntilChanged, EMPTY, map, Observable, switchMap, tap } from 'rx
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { FormValidations } from '../shared/form-validations';
 import { VerificarEmailService } from './services/verificar-email.service';
+import { BaseFormComponent } from '../shared/base-form/base-form.component';
 
 @Component({
   selector: 'app-data-form',
   templateUrl: './data-form.component.html',
   styleUrls: ['./data-form.component.css']
 })
-export class DataFormComponent implements OnInit {
+export class DataFormComponent extends BaseFormComponent implements OnInit {
 
-  formulario: any = FormGroup;
+  //formulario: any = FormGroup;
   // estados: EstadoBr[] = [];
   estados!:Observable<EstadoBr[]>;
   cargos : any[] = [];
@@ -29,9 +30,11 @@ export class DataFormComponent implements OnInit {
     private dropDownService : DropdownService,
     private cepService: ConsultaCepService,
     private verificarEmailService: VerificarEmailService
-  ) { }
+  ) {
+    super();
+   }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
    // this.verificarEmailService.verificarEmail('').subscribe()
     this.estados = this.dropDownService.getEstadoBr();
     this.cargos = this.dropDownService.getCadastro();
@@ -87,7 +90,7 @@ export class DataFormComponent implements OnInit {
 
   }
 
-  onSubmit(){
+  submit() {
     let valueSubmit = Object.assign({}, this.formulario.value);
 
     valueSubmit = Object.assign(valueSubmit, {
@@ -117,9 +120,11 @@ export class DataFormComponent implements OnInit {
 
   }
 
-  resetar(){
-    this.formulario.reset();
-  }
+  // override onSubmit(){
+
+
+  // }
+
 
   consultaCEP() {
     let cep = this.formulario.get('cep').value
@@ -177,19 +182,19 @@ export class DataFormComponent implements OnInit {
     return this.formBuilder.array(values, FormValidations.minSelectedCheckboxes(1));
     }
 
-    verificaValidTouched(campo: string) {
-      return (
-        !this.formulario.get(campo).valid &&
-        (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
-      );
-    }
+    // verificaValidTouched(campo: string) {
+    //   return (
+    //     !this.formulario.get(campo).valid &&
+    //     (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
+    //   );
+    // }
 
-    verificaRequired(campo: string) {
-      return (
-        !this.formulario.get(campo).hasError('required') &&
-        (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
-      );
-    }
+    // verificaRequired(campo: string) {
+    //   return (
+    //     !this.formulario.get(campo).hasError('required') &&
+    //     (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
+    //   );
+    // }
 
     validarEmail(formControl: FormControl) {
       return this.verificarEmailService.verificarEmail(formControl.value)

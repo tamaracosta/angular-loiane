@@ -6,6 +6,7 @@ import { CampoControlErroComponent } from './campo-control-erro/campo-control-er
 import { ErrorMsgComponent } from './error-msg/error-msg.component';
 import { InputFieldComponent } from './input-field/input-field.component';
 import { FormsModule } from '@angular/forms';
+import { BaseFormComponent } from './base-form/base-form.component';
 // import { DropdownService } from './services/Dropdown.service';
 
 
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     FormDebugComponent,
     CampoControlErroComponent,
     ErrorMsgComponent,
-    InputFieldComponent
+    InputFieldComponent,
+    // BaseFormComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     FormDebugComponent,
     CampoControlErroComponent,
     ErrorMsgComponent,
-    InputFieldComponent
+    InputFieldComponent,
+    // BaseFormComponent
   ],
   providers: [
     DropdownService

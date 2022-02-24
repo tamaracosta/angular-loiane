@@ -1,6 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
+import { Cidade } from '../models/cidade';
 import { EstadoBr } from '../models/estado-br';
 
 @Injectable({
@@ -12,10 +13,16 @@ constructor(
   private http : HttpClient
   ) { }
 
-  // getEstadoBr() { return this.http.get<EstadoBr>('assets/dados/estadosBr.json').pipe();}
   getEstadoBr(): Observable<any> {
     return this.http.get('assets/dados/estadosBr.json')
 
+  }
+
+   getCidades(idEstado: number): Observable<any> {
+    return this.http.get<Cidade[]>('assets/dados/cidades.json')
+    .pipe(
+      map((cidades: Cidade[]) => cidades.filter(c => c.estado == idEstado))
+    );
   }
 
   getCadastro(){
@@ -35,13 +42,6 @@ constructor(
       { nome: 'ruby', desc: 'Ruby' }
     ];
   }
-
-  // getNewsletter() {
-  //   return [
-  //     { valor: 's', desc: 'Sim' },
-  //     { valor: 'n', desc: 'Não' }
-  //   ];
-  // }
 
   getNewsletter() {
     return [

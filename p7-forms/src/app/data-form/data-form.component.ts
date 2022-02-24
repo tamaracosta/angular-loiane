@@ -8,6 +8,7 @@ import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { FormValidations } from '../shared/form-validations';
 import { VerificarEmailService } from './services/verificar-email.service';
 import { BaseFormComponent } from '../shared/base-form/base-form.component';
+import { Cidade } from '../shared/models/cidade';
 
 @Component({
   selector: 'app-data-form',
@@ -19,6 +20,7 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
   //formulario: any = FormGroup;
   // estados: EstadoBr[] = [];
   estados!:Observable<EstadoBr[]>;
+  cidades!:Observable<Cidade[]>;
   cargos : any[] = [];
   tecnologias: any[] = [];
   newsletterOp: any[] = [];
@@ -46,7 +48,6 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
     // .subscribe((dados: EstadoBr[]) => {
     //   this.estados = dados
     // });
-
 
     // });
 
@@ -120,12 +121,6 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
 
   }
 
-  // override onSubmit(){
-
-
-  // }
-
-
   consultaCEP() {
     let cep = this.formulario.get('cep').value
     // Nova variável CEP, somente com dígitos
@@ -182,30 +177,10 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
     return this.formBuilder.array(values, FormValidations.minSelectedCheckboxes(1));
     }
 
-    // verificaValidTouched(campo: string) {
-    //   return (
-    //     !this.formulario.get(campo).valid &&
-    //     (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
-    //   );
-    // }
-
-    // verificaRequired(campo: string) {
-    //   return (
-    //     !this.formulario.get(campo).hasError('required') &&
-    //     (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
-    //   );
-    // }
-
     validarEmail(formControl: FormControl) {
       return this.verificarEmailService.verificarEmail(formControl.value)
         .pipe(map(emailExiste => emailExiste ? { emailInvalido: true } : null));
     }
-
-
-
-    // getFrameworksControls() {
-    //   return this.formulario.get('frameworks') ? (<FormArray>this.formulario.get('frameworks')).controls : null;
-    // }
 
   }
 

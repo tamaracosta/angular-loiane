@@ -1,3 +1,4 @@
+import { environment } from './../../../../p8-request-http/src/environments/environment';
 import { Curso } from './curso';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -7,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class CursosService {
 
-private readonly API = "http://localhost:3000/cursos"
+private readonly API = `${environment.API}cursos`
 constructor(private http: HttpClient) { }
 
 list(){

@@ -11,7 +11,7 @@ private readonly API = "http://localhost:3000/cursos"
 constructor(private http: HttpClient) { }
 
 list(){
-  this.http.get<Curso[]>(this.API)
+  return this.http.get<Curso[]>(this.API)
 }
 
 }

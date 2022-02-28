@@ -1,8 +1,10 @@
+import { ActivatedRoute } from '@angular/router';
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CursosService } from '../cursos.service';
 import { Location } from '@angular/common';
+import { map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-cursos-form',
@@ -18,9 +20,11 @@ export class CursosFormComponent implements OnInit {
     private fb: FormBuilder,
     private service: CursosService,
     private modal: AlertModalService,
-    private location: Location
-    ) {
+    private location: Location,
+    private route: ActivatedRoute
+  ) {
     this.form = this.fb.group({
+      id: [null],
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]]
     })
 
@@ -32,22 +36,37 @@ export class CursosFormComponent implements OnInit {
     //   nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]]
     // })
 
+
+    this.route.params
+    .pipe(
+      map((params : any)=> params['id']),
+      switchMap(id => this.service.loadByID(id))
+    )
+    .subscribe(curso => this.updateForm(curso));
+
   }
 
-  hasError(field: string) : any {
+  updateForm(curso: any) {
+    this.form.patchValue({
+      id: curso.id,
+      nome: curso.nome
+    });
+  }
+
+  hasError(field: string): any {
     return this.form.get(field)?.errors;
   }
 
   onSubmit() {
     this.submitted = true;
-    if(this.form.valid){
+    if (this.form.valid) {
       console.log('submit')
     }
 
     this.service.create(this.form.value).subscribe(
       sucess => {
         this.modal.showAlertSuccess('Curso criado com sucesso'),
-        this.location.back()
+          this.location.back()
       },
       error => this.modal.showAlertDanger('Erro ao criar o curso. Tente novamente.'),
       () => console.log('request completo')

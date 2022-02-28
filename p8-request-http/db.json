@@ -35,6 +35,18 @@
     {
       "nome": "React",
       "id": 9
+    },
+    {
+      "nome": "Bootstrap 5",
+      "id": 10
+    },
+    {
+      "nome": "Bootstrap 4.3",
+      "id": 11
+    },
+    {
+      "nome": "Materialize",
+      "id": 12
     }
   ]
 }

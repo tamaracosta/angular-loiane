@@ -1,14 +1,6 @@
 {
   "cursos": [
     {
-      "nome": "Angular Material",
-      "id": 3
-    },
-    {
-      "nome": "Material",
-      "id": 4
-    },
-    {
       "nome": "Material 2",
       "id": 5
     },
@@ -47,6 +39,10 @@
     {
       "id": 16,
       "nome": "tamara teste2"
+    },
+    {
+      "id": 17,
+      "nome": "curso novo"
     }
   ]
 }

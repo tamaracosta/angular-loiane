@@ -36,7 +36,7 @@ export class AlertModalService {
   }
 
   showConfirm(title: string, msg: string, okTxt?: string, cancelTxt?: string) {
-    alert('oi')
+
 
     const bsModalRef: BsModalRef = this.modalService.show(ConfirmModalComponent);
       bsModalRef.content.title = title;

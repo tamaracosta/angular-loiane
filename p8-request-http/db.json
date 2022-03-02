@@ -1,10 +1,6 @@
 {
   "cursos": [
     {
-      "id": 1,
-      "nome": "Angular"
-    },
-    {
       "nome": "Angular Material",
       "id": 3
     },
@@ -33,10 +29,6 @@
       "id": 9
     },
     {
-      "id": 10,
-      "nome": "Bootstrap 55"
-    },
-    {
       "nome": "Bootstrap 4.3",
       "id": 11
     },
@@ -51,10 +43,6 @@
     {
       "id": 14,
       "nome": "Material 88"
-    },
-    {
-      "id": 15,
-      "nome": "Tamara teste"
     },
     {
       "id": 16,

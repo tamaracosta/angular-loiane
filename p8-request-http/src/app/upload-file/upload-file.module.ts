@@ -7,7 +7,7 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
-    UploadFileComponent
+    UploadFileComponent,
   ],
   imports: [
     CommonModule,

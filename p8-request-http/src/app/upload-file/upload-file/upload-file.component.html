@@ -10,4 +10,14 @@
   <button type="button" class="btn btn-primary" (click)="onUpload()" [disabled]="!files" >
     Upload
   </button>
+
 </div>
+<div class="progress">
+    <div
+      class="progress-bar"
+      role="progressbar"
+      [style.width]="progress + '%'"
+    >
+      {{ progress }}%
+    </div>
+  </div>

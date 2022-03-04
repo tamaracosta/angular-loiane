@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "curso-angular-tamara": {
+      "hosting": {
+        "request-http": [
+          "curso-angular-tamara"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "curso-angular-tamara"
+  }
+}

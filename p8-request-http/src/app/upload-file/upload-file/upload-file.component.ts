@@ -1,5 +1,5 @@
 
-import { environment } from './../../../../../p8-request-http/src/environments/environment.prod';
+import { environment } from './../../../../../p8-request-http/src/environments/environment';
 
 import { UploadFileService } from './../upload-file.service';
 import { Component, OnInit } from '@angular/core';
@@ -54,6 +54,20 @@ export class UploadFileComponent implements OnInit {
       //     this.progress = percentDone;
       //   }
     }
+  }
+
+  onDownloadExcel() {
+    this.service.download(environment.BASE_URL + '/downloadExcel')
+    .subscribe((res: any) => {
+      this.service.handleFile(res, 'report.xlsx');
+    });
+  }
+
+  onDownloadPDF() {
+    this.service.download(environment.BASE_URL + '/downloadPDF')
+    .subscribe((res: any) => {
+      this.service.handleFile(res, 'report.pdf');
+    });
   }
 }
 
